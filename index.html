@@ -43,14 +43,14 @@
   :root:not([data-theme="light"]) {
     --bg: #1B1A24; --surface: #282634; --card: #2F2C3D; --ink: #F5F3FA; --ink-2: #B9B4C8;
     --coral-soft: #47262A; --blue-soft: #26305A; --purple-soft: #352B5E; --green-soft: #1E3A2D;
-    --sun-soft: #3F3414; --pink-soft: #46263A; --note-ink: #FCE8F2;
+    --sun-soft: #3F3414; --pink-soft: #46263A; --note-ink: #FCE8F2; --green-ink: #6EE0A6;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #1B1A24; --surface: #282634; --card: #2F2C3D; --ink: #F5F3FA; --ink-2: #B9B4C8;
   --coral-soft: #47262A; --blue-soft: #26305A; --purple-soft: #352B5E; --green-soft: #1E3A2D;
-  --sun-soft: #3F3414; --pink-soft: #46263A; --note-ink: #FCE8F2;
+  --sun-soft: #3F3414; --pink-soft: #46263A; --note-ink: #FCE8F2; --green-ink: #6EE0A6;
   color-scheme: dark;
 }
 
@@ -330,6 +330,36 @@ section { position: relative; }
 .hilsen .btn { background: var(--pink-strong); color: #fff; }
 
 
+/* Ukeplan */
+.ukeplan { background: var(--green-soft); }
+.ukeplan .stage { background: var(--card); }
+.up-card { margin-top: 12px; background: var(--card); border: 2px solid var(--green-soft); border-radius: 24px; padding: 14px 16px; }
+.up-card .k { font-size: 14px; font-weight: 700; color: var(--green-ink); }
+.up-row { display: flex; align-items: center; gap: 12px; margin-top: 10px; }
+.up-row .av { margin-left: 0; box-shadow: none; flex: none; }
+.up-row b { display: block; font-size: 16px; }
+.up-row small { display: block; font-size: 14px; color: var(--ink-2); }
+.pages { margin-left: auto; position: relative; width: 34px; height: 42px; flex: none; }
+.pages i { position: absolute; inset: 0; background: var(--card); border: 2px solid var(--ink-2); border-radius: 4px; }
+.pages i:nth-child(1) { transform: translate(6px, -6px); opacity: .45; }
+.pages i:nth-child(2) { transform: translate(3px, -3px); opacity: .7; }
+.pages i:nth-child(3)::before, .pages i:nth-child(3)::after { content: ""; position: absolute; left: 6px; right: 6px; height: 3px; border-radius: 2px; background: var(--ink-2); top: 10px; }
+.pages i:nth-child(3)::after { top: 18px; right: 12px; }
+.found { margin-top: 12px; width: 100%; min-height: 44px; border: 0; border-radius: 14px; background: var(--sun-soft); font-weight: 700; font-size: 16px; display: flex; align-items: center; gap: 8px; padding: 0 14px; cursor: pointer; text-align: left; transition: transform 140ms var(--ease-out); }
+.found:active { transform: scale(0.98); }
+.found svg { width: 18px; height: 18px; color: var(--sun-strong); flex: none; }
+.found .chev { margin-left: auto; transition: transform 240ms var(--ease-out); }
+.found[aria-expanded="true"] .chev { transform: rotate(90deg); }
+.sugg { margin-top: 10px; background: #FFF1C7; color: #2A1C00; border-radius: 20px; padding: 6px 16px 14px; }
+.sugg[hidden] { display: none; }
+.sugg .pack label { font-size: 16px; min-height: 44px; gap: 12px; }
+.sugg .pack input { width: 26px; height: 26px; border-color: #2A1C00; }
+.sugg .pack input:checked + span { text-decoration: none; }
+.sugg .pack small { display: block; font-size: 14px; color: #5E4B1A; font-weight: 600; }
+.sugg .add { margin-top: 10px; width: 100%; min-height: 44px; border: 0; border-radius: 14px; background: #2A1C00; color: #fff; font-weight: 700; font-size: 16px; cursor: pointer; }
+.sugg .done-msg { margin-top: 10px; font-weight: 700; font-size: 16px; color: #0B6B41; }
+.fine { margin-top: 18px; font-size: 15px; color: var(--ink-2); }
+
 /* Middag */
 .middag { background: #FFE9D4; }
 .middag .split { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
@@ -400,7 +430,7 @@ section { position: relative; }
 .brief-rem { margin-top: 10px; background: #FFE9A8; color: #2A1C00; border-radius: 18px; padding: 12px 16px; font-weight: 600; font-size: 16px; }
 
 /* Widgeter */
-.widgets-field { background: var(--purple-soft); border-radius: var(--radius); padding: clamp(20px, 3.4vw, 56px); margin-top: 56px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: clamp(12px, 1.6vw, 24px); }
+.widgets-field { background: var(--purple-soft); border-radius: var(--radius); padding: clamp(20px, 3.4vw, 56px); margin-top: 56px; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: clamp(12px, 1.6vw, 24px); }
 .wdg { border-radius: 26px; padding: 18px; min-height: 190px; background: var(--card); color: var(--ink); transition: transform 300ms var(--ease-out); }
 .wdg .lbl { font-size: 14px; font-weight: 800; }
 .wdg-day .big { font-size: 34px; font-weight: 800; line-height: 1; margin-top: 2px; }
@@ -416,10 +446,6 @@ section { position: relative; }
 .wdg-list li::before { content: ""; width: 18px; height: 18px; border-radius: 50%; border: 2.5px solid var(--green); flex: none; }
 .wdg-list li.x { color: var(--ink-2); text-decoration: line-through; }
 .wdg-list li.x::before { background: var(--green); }
-.wdg-eve { background: var(--evening); color: #fff; }
-.wdg-eve .lbl { color: #FFE08A; }
-.wdg-eve b { display: block; font-size: 38px; font-weight: 800; margin-top: 4px; }
-.wdg-eve span { display: block; font-size: 15px; font-weight: 600; }
 .wcap { margin-top: 14px; font-size: 16px; }
 .wcap b { display: block; }
 .wcap span { color: var(--ink-2); }
@@ -515,6 +541,7 @@ details .ans { padding: 0 24px 24px; font-size: 17px; max-width: 60ch; }
     <ul>
       <li><a href="#idag">I dag</a></li>
       <li><a href="#husk">Husk</a></li>
+      <li><a href="#ukeplan">Ukeplan</a></li>
       <li><a href="#middag">Middag</a></li>
       <li><a href="#kveld">Kveldsbrief</a></li>
       <li><a href="#widgeter">Widgeter</a></li>
@@ -533,7 +560,7 @@ details .ans { padding: 0 24px 24px; font-size: 17px; max-width: 60ch; }
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <h1 id="hero-title">Hele familien under ett tak</h1>
-      <p class="lede">Redet samler avtalene, kjøringen, middagene, huskelappene og de små hilsenene i én app. Alle ser det samme, og ingen trenger å spørre «hvem henter?» i familiechatten.</p>
+      <p class="lede">Redet samler avtalene, kjøringen, middagene, ukeplanene, huskelappene og de små hilsenene i én app. Alle ser det samme, og ingen trenger å spørre «hvem henter?» i familiechatten.</p>
       <div class="hero-actions">
         <a class="btn btn-coral" href="#idag">Se hvordan det virker</a>
         <span class="price-note"><strong>49 kr</strong> én gang, for hele familien</span>
@@ -835,6 +862,62 @@ details .ans { padding: 0 24px 24px; font-size: 17px; max-width: 60ch; }
   </div>
 </section>
 
+<!-- ============ Ukeplan ============ -->
+<section class="band ukeplan" id="ukeplan" aria-labelledby="ukeplan-title">
+  <div class="wrap split">
+    <div class="copy" data-reveal>
+      <h2 class="h2" id="ukeplan-title">Ukeplanen, alltid for hånden</h2>
+      <p class="lede">Ta bilde av ukeplanen fra skolen eller barnehagen, eller legg ved PDF-en eller Word-dokumentet fra e-posten. Skanneren retter opp arket, og har planen flere sider, blir de samlet i én PDF.</p>
+      <p class="lede">Ukeplanen for hvert barn ligger på «I dag» under avtalene hele uka, og i helgen før. Den deles med familien, så ingen trenger å lete i meldinger og e-post.</p>
+      <p class="lede">Har telefonen Apple Intelligence, leser Redet ukeplanen og foreslår det som bør i Husk, som gymtøy og turdag. Alt skjer på telefonen, og ingenting legges til før du har sett over.</p>
+      <p class="pointer-note"><svg class="roof" viewBox="0 0 36 20" aria-hidden="true"><path d="M4 16 L18 4 L32 16" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>Prøv selv: trykk «Fant 3 ting å huske».</p>
+      <p class="fine">Forslag til Husk krever iPhone 15 Pro eller nyere med Apple Intelligence slått på. Ukeplanen virker på alle telefoner.</p>
+    </div>
+    <div class="stage" data-reveal>
+      <div class="screen" data-ui>
+        <p class="s-date">Mandag 9. november</p>
+        <div class="s-title"><b>I dag</b></div>
+        <p class="s-h">Dagen</p>
+        <div class="ev">
+          <time>08:15</time><i class="bar" style="background:var(--purple)"></i>
+          <div><b>Skole</b><small>Ida</small></div>
+        </div>
+        <div class="ev">
+          <time>17:30</time><i class="bar" style="background:var(--green)"></i>
+          <div><b>Fotball</b><small>Emil · Jonas kjører</small></div>
+        </div>
+        <div class="up-card">
+          <p class="k">Ukeplaner, uke 46</p>
+          <div class="up-row">
+            <span class="av" style="background:var(--purple-strong)">I</span>
+            <div><b>Ida</b><small>3 sider</small></div>
+            <span class="pages" aria-hidden="true"><i></i><i></i><i></i></span>
+          </div>
+          <button class="found" type="button" id="found-btn" aria-expanded="false" aria-controls="sugg">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l1.9 5.6L19.5 9.5l-5.6 1.9L12 17l-1.9-5.6L4.5 9.5l5.6-1.9z M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z" fill="currentColor"/></svg>
+            <span id="found-text">Fant 3 ting å huske</span>
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="sugg" id="sugg" hidden>
+            <ul class="pack" aria-label="Forslag til Husk fra ukeplanen">
+              <li><label><input type="checkbox" checked><span>Gym<small>Tirsdag · gymtøy og innesko</small></span></label></li>
+              <li><label><input type="checkbox" checked><span>Turdag<small>Torsdag · matpakke og ull</small></span></label></li>
+              <li><label><input type="checkbox" checked><span>Bibliotek<small>Fredag · bibliotekboka</small></span></label></li>
+            </ul>
+            <button class="add" type="button" id="sugg-add">Legg til i Husk</button>
+            <p class="done-msg" id="sugg-done" hidden aria-live="polite"></p>
+          </div>
+          <div class="up-row" style="margin-top:14px">
+            <span class="av" style="background:var(--green-strong)">E</span>
+            <div><b>Emil</b><small>PDF fra e-posten</small></div>
+            <span class="pages" aria-hidden="true"><i></i><i></i><i></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ Hilsener ============ -->
 <section class="band hilsen" id="hilsener" aria-labelledby="hilsen-title">
   <div class="wrap split">
@@ -928,7 +1011,7 @@ details .ans { padding: 0 24px 24px; font-size: 17px; max-width: 60ch; }
   <div class="wrap">
     <div data-reveal>
       <h2 class="h2" id="widget-title">Rett på hjemskjermen</h2>
-      <p class="lede" style="margin-top:24px;max-width:44ch">Fire widgeter i de samme personfargene, så du ser med ett blikk hvem avtalen gjelder. Bla mellom dagene og kryss av på handlelista uten å åpne appen.</p>
+      <p class="lede" style="margin-top:24px;max-width:44ch">Tre widgeter i de samme personfargene, så du ser med ett blikk hvem avtalen gjelder. Bla mellom dagene og kryss av på handlelista uten å åpne appen.</p>
     </div>
     <div class="widgets-field" data-reveal>
       <div class="wcell">
@@ -955,15 +1038,6 @@ details .ans { padding: 0 24px 24px; font-size: 17px; max-width: 60ch; }
           <ul><li>Melk</li><li>Tacoskjell</li><li class="x">Bananer</li><li>Rømme</li></ul>
         </div>
         <p class="wcap"><b>Liste</b><span>Kryss av rett fra hjemskjermen.</span></p>
-      </div>
-      <div class="wcell">
-        <div class="wdg wdg-eve" data-ui>
-          <p class="lbl">I MORGEN</p>
-          <b>6°</b>
-          <span>Svømmetøy, Emil</span>
-          <span>Gave, Ida</span>
-        </div>
-        <p class="wcap"><b>I morgen</b><span>Kveldsbriefen i lomma.</span></p>
       </div>
     </div>
   </div>
@@ -994,7 +1068,7 @@ details .ans { padding: 0 24px 24px; font-size: 17px; max-width: 60ch; }
       <ul class="incl">
         <li>Ett kjøp dekker hele familien med Familiedeling i App Store</li>
         <li>Ingen abonnement, ingen reklame og ingen konto å lage</li>
-        <li>Alle funksjoner: kalender, kjøring, lister, middagsplan, Husk, hilsener, kveldsbrief og widgeter</li>
+        <li>Alle funksjoner: kalender, kjøring, lister, middagsplan, Husk, ukeplan fra skolen, hilsener, kveldsbrief og widgeter</li>
         <li>Oppdateringer er med i prisen</li>
       </ul>
       <!-- APP-STORE-LENKE: Bytt href="#sporsmal" med App Store-lenken når appen er godkjent
@@ -1015,11 +1089,11 @@ details .ans { padding: 0 24px 24px; font-size: 17px; max-width: 60ch; }
       </details>
       <details name="faq">
         <summary>Må vi bytte kalender?<span class="pm" aria-hidden="true"></span></summary>
-        <div class="ans"><p>Nei. Redet leser kalenderne som allerede ligger på telefonen, også jobbkalenderen hvis du vil. Du velger selv hvilke kalendere som hører til hvem.</p></div>
+        <div class="ans"><p>Nei. Redet leser kalenderne som allerede ligger på telefonen, også jobbkalenderen hvis du vil. Du velger selv hvilke kalendere som hører til hvem. Vil du at familien skal se en kalender, deler du den i Apple Kalender som vanlig.</p></div>
       </details>
       <details name="faq">
         <summary>Hva ser resten av familien?<span class="pm" aria-hidden="true"></span></summary>
-        <div class="ans"><p>Når noen skal kjøre eller ikke kan være med, deles tittel, tid og sted for den avtalen med familien. Lister deler du med dem du velger, og hilsener går bare til den du skriver til.</p></div>
+        <div class="ans"><p>Kalendere som ikke er delt i Apple Kalender, ser bare du. Når noen skal kjøre eller ikke kan være med, deles tittel, tid og sted for den avtalen med familien. Middagsplanen og ukeplanene deles med hele familien, lister med dem du velger, og hilsener går bare til den du skriver til.</p></div>
       </details>
       <details name="faq">
         <summary>Trenger alle hver sin iPhone?<span class="pm" aria-hidden="true"></span></summary>
@@ -1028,6 +1102,10 @@ details .ans { padding: 0 24px 24px; font-size: 17px; max-width: 60ch; }
       <details name="faq">
         <summary>Koster det noe for hver person?<span class="pm" aria-hidden="true"></span></summary>
         <div class="ans"><p>Nei. 49 kr er et engangskjøp, og med Familiedeling i App Store får alle i familien appen uten å betale på nytt.</p></div>
+      </details>
+      <details name="faq">
+        <summary>Sendes ukeplanen til noen når Redet leser den?<span class="pm" aria-hidden="true"></span></summary>
+        <div class="ans"><p>Nei. Forslagene til Husk lages av Apple Intelligence på telefonen, uten internett. Ukeplanen deles bare med familien via iCloud, som resten av appen.</p></div>
       </details>
       <details name="faq">
         <summary>Hvor kommer værmeldingen fra?<span class="pm" aria-hidden="true"></span></summary>
@@ -1054,7 +1132,7 @@ details .ans { padding: 0 24px 24px; font-size: 17px; max-width: 60ch; }
       <span class="word">Redet</span>
     </div>
     <div class="foot-cols">
-      <div><b>Appen</b><a href="#idag">I dag og kjøring</a><a href="#husk">Husk</a><a href="#hilsener">Hilsener</a><a href="#middag">Middag</a></div>
+      <div><b>Appen</b><a href="#idag">I dag og kjøring</a><a href="#husk">Husk</a><a href="#ukeplan">Ukeplan</a><a href="#hilsener">Hilsener</a><a href="#middag">Middag</a></div>
       <div><b>Mer</b><a href="#kveld">Kveldsbrief</a><a href="#widgeter">Widgeter</a><a href="#pris">Pris</a></div>
       <div><b>Hjelp</b><a href="#sporsmal">Spørsmål og svar</a><a href="support/">Hjelp og kontakt</a><a href="personvern/">Personvern</a></div>
       <div><b>Laget i Norge</b><p>Av <a href="https://tillerflatendigital.no" style="display:inline;padding:0">Tillerflaten Digital</a> (org.nr. 938 657 742), for familier som vil ha litt bedre oversikt og litt mindre mas.</p></div>
@@ -1256,6 +1334,24 @@ details .ans { padding: 0 24px 24px; font-size: 17px; max-width: 60ch; }
     document.querySelectorAll('[data-reveal]').forEach(function (el) { el.classList.add('in'); });
   }
 })();
+  // Ukeplan: forslag til Husk
+  (function () {
+    var btn = document.getElementById('found-btn'), box = document.getElementById('sugg');
+    var add = document.getElementById('sugg-add'), done = document.getElementById('sugg-done');
+    if (!btn || !box) return;
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+      box.hidden = open;
+    });
+    add.addEventListener('click', function () {
+      var n = box.querySelectorAll('input:checked').length;
+      add.hidden = true; done.hidden = false;
+      done.textContent = n === 0 ? 'Ingenting lagt til.' : (n === 1 ? '1 ting er lagt i Husk for Ida.' : n + ' ting er lagt i Husk for Ida.');
+      document.getElementById('found-text').textContent = n === 0 ? 'Ingen forslag lagt til' : 'Lagt i Husk';
+      box.querySelectorAll('input').forEach(function (i) { i.disabled = true; });
+    });
+  })();
 </script>
 </body>
 </html>
