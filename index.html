@@ -60,7 +60,7 @@ html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 body {
   margin: 0; background: var(--bg); color: var(--ink);
   font-family: var(--font); font-size: 18px; line-height: 1.55;
-  -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  -webkit-font-smoothing: antialiased; overflow-x: clip;
 }
 img, svg { display: block; max-width: 100%; }
 a { color: inherit; }
@@ -93,7 +93,11 @@ h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.
 .roof { display: inline-block; width: 1.1em; height: 0.62em; flex: none; }
 
 /* ---------- Toppen ---------- */
-.nav { position: relative; z-index: 5; }
+.nav { position: sticky; top: 0; z-index: 50; background: var(--bg); transition: background-color 240ms ease; }
+.nav .wrap { transition: min-height 240ms var(--ease-out); }
+.nav.stuck { background: var(--card); }
+.nav.stuck .wrap { min-height: 68px; }
+section[id], main[id] { scroll-margin-top: 72px; }
 .nav .wrap { display: flex; align-items: center; gap: 28px; min-height: 84px; }
 .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 22px; letter-spacing: -0.02em; text-decoration: none; }
 .brand svg { width: 40px; height: 40px; border-radius: 11px; }
@@ -1217,6 +1221,11 @@ details .ans { padding: 0 24px 24px; font-size: 17px; max-width: 60ch; }
     shopNote.textContent = skipped + ' hoppet over fordi de står på lista eller er merket «Har vi».';
   });
   renderWeek();
+
+  /* ---------- Fast toppmeny ---------- */
+  var nav = document.querySelector('.nav');
+  var onScroll = function () { nav.classList.toggle('stuck', window.scrollY > 8); };
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
   /* ---------- Innganger og pause når scenen er utenfor skjermen ---------- */
   if ('IntersectionObserver' in window) {
