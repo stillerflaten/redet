@@ -105,7 +105,16 @@ section[id], main[id] { scroll-margin-top: 72px; }
 .nav ul a { text-decoration: none; font-weight: 600; font-size: 16px; color: var(--ink-2); transition: color 160ms ease; }
 .nav ul a:hover { color: var(--ink); }
 .nav .btn { min-height: 44px; font-size: 15px; padding: 0 20px; }
-@media (max-width: 860px) { .nav ul { display: none; } .nav .btn { margin-left: auto; } }
+@media (max-width: 860px) { .nav ul { display: none; } .nav .btn, .nav .appstore { margin-left: auto; } }
+
+/* Apples offisielle badge. Retningslinjer: minst 40 px høy på skjerm, og luft rundt på minst 1/4 av høyden
+   (1/10 når det er trangt). Badgen skal ikke endres, beskjæres eller farges om. */
+.appstore { display: inline-block; flex: none; line-height: 0; border-radius: 8px; transition: transform 140ms var(--ease-out); }
+.appstore img { display: block; width: auto; }
+.appstore:focus-visible { outline: 3px solid var(--sun); outline-offset: 4px; }
+@media (hover: hover) and (pointer: fine) { .appstore:hover { transform: translateY(-2px); } }
+.nav .appstore { margin-block: 10px; }
+.nav .appstore img { height: 40px; }
 
 /* ---------- Helten: huset ---------- */
 .hero { padding-bottom: 0; }
@@ -441,6 +450,8 @@ section { position: relative; }
 .incl li { display: flex; gap: 14px; align-items: baseline; font-size: 19px; }
 .incl li::before { content: ""; width: 18px; height: 10px; flex: none; transform: translateY(-2px); background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 20'%3E%3Cpath d='M4 16 L18 4 L32 16' fill='none' stroke='%23FFC93C' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; }
 .pris .btn { background: #fff; color: var(--coral-strong); margin-top: 34px; }
+.pris .appstore { margin-top: 34px; }
+.pris .appstore img { height: 56px; }
 .pris .h2 { font-size: clamp(34px, 3.8vw, 56px); }
 @media (max-width: 900px) { .pris-grid { grid-template-columns: 1fr; } }
 
@@ -509,7 +520,9 @@ details .ans { padding: 0 24px 24px; font-size: 17px; max-width: 60ch; }
       <li><a href="#widgeter">Widgeter</a></li>
       <li><a href="#sporsmal">Spørsmål</a></li>
     </ul>
-    <a class="btn" href="#pris">49 kr, én gang</a>
+    <!-- APP-STORE-LENKE: Bytt href="#pris" med App Store-lenken når appen er godkjent
+         (f.eks. https://apps.apple.com/no/app/redet/id1234567890). Samme lenke står to steder på siden. -->
+    <a class="appstore" href="#pris" aria-label="Last ned Redet fra App Store"><img src="bilder/last-ned-i-app-store.svg" alt="Last ned fra App Store" width="120" height="40"></a>
   </div>
 </header>
 
@@ -984,7 +997,9 @@ details .ans { padding: 0 24px 24px; font-size: 17px; max-width: 60ch; }
         <li>Alle funksjoner: kalender, kjøring, lister, middagsplan, Husk, hilsener, kveldsbrief og widgeter</li>
         <li>Oppdateringer er med i prisen</li>
       </ul>
-      <a class="btn" href="#sporsmal">Kommer snart til iPhone</a>
+      <!-- APP-STORE-LENKE: Bytt href="#sporsmal" med App Store-lenken når appen er godkjent
+           (f.eks. https://apps.apple.com/no/app/redet/id1234567890). Samme lenke står to steder på siden. -->
+      <a class="appstore" href="#sporsmal" aria-label="Last ned Redet fra App Store"><img src="bilder/last-ned-i-app-store.svg" alt="Last ned fra App Store" width="120" height="40"></a>
     </div>
   </div>
 </section>
