@@ -316,6 +316,49 @@ section { position: relative; }
 .sched { font-size: 16px; color: var(--ink-2); }
 .hilsen .btn { background: var(--pink-strong); color: #fff; }
 
+
+/* Middag */
+.middag { background: #FFE9D4; }
+.middag .split { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+@media (max-width: 900px) { .middag .split { grid-template-columns: 1fr; } .middag .din-stage { order: 2; } }
+.din-stage { background: #FFD3AE; border-radius: var(--radius); padding: clamp(24px, 4vw, 64px); display: flex; justify-content: center; }
+.din-stage .screen { margin: 0 auto; }
+.seg-ctl { display: grid; grid-template-columns: 1fr 1fr; background: var(--surface); border-radius: 12px; padding: 3px; margin-top: 14px; }
+.seg-ctl span { text-align: center; font-size: 15px; font-weight: 600; padding: 7px 0; border-radius: 9px; color: var(--ink-2); }
+.seg-ctl span.on { background: var(--card); color: var(--ink); }
+.wk { display: flex; align-items: center; justify-content: space-between; margin: 16px 0 6px; font-weight: 700; font-size: 16px; }
+.wk i { font-style: normal; color: var(--ink-2); font-size: 20px; padding: 0 6px; }
+.din { background: var(--card); border-radius: 18px; padding: 11px 14px; margin-top: 6px; display: grid; grid-template-columns: 44px 1fr auto; gap: 10px; align-items: center; transition: background-color 260ms ease; }
+.din .d { font-size: 14px; font-weight: 700; color: var(--ink-2); }
+.din .d.today { color: #C0560A; }
+.din b { display: block; font-size: 16px; line-height: 1.25; }
+.din .none { color: var(--ink-2); font-weight: 600; font-size: 16px; }
+.cook { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 13px; transition: background-color 260ms ease, transform 300ms var(--ease-out); }
+.cook.all { background: var(--surface); color: var(--ink); font-size: 11px; width: auto; padding: 0 9px; border-radius: 999px; }
+.cook.pop { transform: scale(1.18); }
+.din.busy { background: var(--coral-soft); }
+.din .warn { grid-column: 2 / -1; font-size: 14px; color: var(--coral-ink); font-weight: 600; line-height: 1.35; }
+.din .fix { grid-column: 2 / -1; display: flex; gap: 6px; flex-wrap: wrap; }
+.din .fix button, .sugg button { border: 0; border-radius: 999px; min-height: 36px; padding: 0 14px; font-weight: 700; font-size: 14px; cursor: pointer; transition: transform 140ms var(--ease-out), background-color 200ms ease; }
+.din .fix button:active, .sugg button:active, .shop-btn:active { transform: scale(0.96); }
+.din .fix button { background: var(--card); color: var(--ink); }
+.sugg { grid-column: 2 / -1; display: flex; gap: 6px; flex-wrap: wrap; }
+.sugg button { background: #FFE9D4; color: #7A3606; }
+.shop-btn { margin-top: 14px; width: 100%; min-height: 48px; border: 0; border-radius: 14px; background: #C0560A; color: #fff; font-weight: 700; font-size: 16px; cursor: pointer; transition: transform 140ms var(--ease-out), opacity 200ms ease; }
+.shop-btn[disabled] { opacity: .55; cursor: default; }
+.shop-note { font-size: 13px; color: var(--ink-2); margin-top: 6px; }
+.shop { margin-top: 12px; background: var(--card); border-radius: 18px; padding: 12px 14px; }
+.shop .lbl { font-size: 13px; font-weight: 800; color: var(--green-ink); }
+.shop ul { list-style: none; padding: 0; margin: 6px 0 0; display: grid; gap: 6px; font-size: 15px; font-weight: 600; }
+.shop li { display: flex; align-items: center; gap: 10px; }
+.shop li::before { content: ""; width: 16px; height: 16px; border-radius: 50%; border: 2.5px solid var(--green); flex: none; }
+.shop li.new { animation: itemIn 420ms var(--ease-out) both; }
+.shop li .src { margin-left: auto; font-size: 12px; color: var(--ink-2); font-weight: 600; }
+@keyframes itemIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.din-facts { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 10px; }
+.din-facts li { display: flex; gap: 12px; align-items: baseline; font-size: 18px; }
+.din-facts li::before { content: ""; width: 18px; height: 10px; flex: none; transform: translateY(-2px); background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 20'%3E%3Cpath d='M4 16 L18 4 L32 16' fill='none' stroke='%23C0560A' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; }
+
 /* Kveldsbrief */
 .kveld { background: var(--evening); color: #F5F3FA; overflow: hidden; }
 .kveld .h2, .kveld h3 { color: #fff; }
@@ -457,6 +500,7 @@ details .ans { padding: 0 24px 24px; font-size: 17px; max-width: 60ch; }
     <ul>
       <li><a href="#idag">I dag</a></li>
       <li><a href="#husk">Husk</a></li>
+      <li><a href="#middag">Middag</a></li>
       <li><a href="#kveld">Kveldsbrief</a></li>
       <li><a href="#widgeter">Widgeter</a></li>
       <li><a href="#sporsmal">Spørsmål</a></li>
@@ -472,7 +516,7 @@ details .ans { padding: 0 24px 24px; font-size: 17px; max-width: 60ch; }
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <h1 id="hero-title">Hele familien under ett tak</h1>
-      <p class="lede">Redet samler avtalene, kjøringen, huskelappene og de små hilsenene i én app. Alle ser det samme, og ingen trenger å spørre «hvem henter?» i familiechatten.</p>
+      <p class="lede">Redet samler avtalene, kjøringen, middagene, huskelappene og de små hilsenene i én app. Alle ser det samme, og ingen trenger å spørre «hvem henter?» i familiechatten.</p>
       <div class="hero-actions">
         <a class="btn btn-coral" href="#idag">Se hvordan det virker</a>
         <span class="price-note"><strong>49 kr</strong> én gang, for hele familien</span>
@@ -796,6 +840,37 @@ details .ans { padding: 0 24px 24px; font-size: 17px; max-width: 60ch; }
   </div>
 </section>
 
+
+<!-- ============ Middag ============ -->
+<section class="band middag" id="middag" aria-labelledby="middag-title">
+  <div class="wrap split">
+    <div class="din-stage" data-reveal>
+      <div class="screen" data-ui>
+        <div class="s-title"><b>Lister</b></div>
+        <div class="seg-ctl" aria-hidden="true"><span>Lister</span><span class="on">Middag</span></div>
+        <p class="wk"><i aria-hidden="true">‹</i>Uke 45<i aria-hidden="true">›</i></p>
+        <div id="din-week" aria-live="polite"></div>
+        <button class="shop-btn" type="button" id="shop-btn">Legg ukas ingredienser i handlelista</button>
+        <p class="shop-note">Det som står på lista fra før, eller er merket «Har vi», legges ikke inn.</p>
+        <div class="shop" id="shop" hidden>
+          <p class="lbl">HANDLELISTE</p>
+          <ul id="shop-list"></ul>
+        </div>
+      </div>
+    </div>
+    <div class="copy" data-reveal>
+      <h2 class="h2" id="middag-title">Hva blir det til middag?</h2>
+      <p class="lede">Planlegg uka på et par minutter: hva dere skal spise, og hvem som lager. Har den som skal lage en avtale rundt middagstid, sier appen fra i god tid.</p>
+      <ul class="din-facts">
+        <li>Ingrediensene havner i handlelista med ett trykk, uten dobbelt opp.</li>
+        <li>Kveldsbriefen minner om det som må gjøres dagen før, som å tine kyllingen.</li>
+        <li>Middagen står på «I dag» og i widgeten, så ingen trenger å spørre.</li>
+      </ul>
+      <p class="pointer-note"><svg class="roof" viewBox="0 0 36 20" aria-hidden="true"><path d="M4 16 L18 4 L32 16" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>Prøv selv: velg middag til torsdag, få en annen til å lage på tirsdag, og fyll handlelista.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ============ Kveldsbrief ============ -->
 <section class="band kveld" id="kveld" aria-labelledby="kveld-title">
   <div class="sky scene" aria-hidden="true">
@@ -902,7 +977,7 @@ details .ans { padding: 0 24px 24px; font-size: 17px; max-width: 60ch; }
       <ul class="incl">
         <li>Ett kjøp dekker hele familien med Familiedeling i App Store</li>
         <li>Ingen abonnement, ingen reklame og ingen konto å lage</li>
-        <li>Alle funksjoner: kalender, kjøring, lister, Husk, hilsener, kveldsbrief og widgeter</li>
+        <li>Alle funksjoner: kalender, kjøring, lister, middagsplan, Husk, hilsener, kveldsbrief og widgeter</li>
         <li>Oppdateringer er med i prisen</li>
       </ul>
       <a class="btn" href="#sporsmal">Kommer snart til iPhone</a>
@@ -960,7 +1035,7 @@ details .ans { padding: 0 24px 24px; font-size: 17px; max-width: 60ch; }
       <span class="word">Redet</span>
     </div>
     <div class="foot-cols">
-      <div><b>Appen</b><a href="#idag">I dag og kjøring</a><a href="#husk">Husk</a><a href="#hilsener">Hilsener</a></div>
+      <div><b>Appen</b><a href="#idag">I dag og kjøring</a><a href="#husk">Husk</a><a href="#hilsener">Hilsener</a><a href="#middag">Middag</a></div>
       <div><b>Mer</b><a href="#kveld">Kveldsbrief</a><a href="#widgeter">Widgeter</a><a href="#pris">Pris</a></div>
       <div><b>Hjelp</b><a href="#sporsmal">Spørsmål og svar</a><a href="support/">Hjelp og kontakt</a><a href="personvern/">Personvern</a></div>
       <div><b>Laget i Norge</b><p>Av <a href="https://tillerflatendigital.no" style="display:inline;padding:0">tillerflatendigital.no</a>, for familier som vil ha litt bedre oversikt og litt mindre mas.</p></div>
@@ -1069,6 +1144,79 @@ details .ans { padding: 0 24px 24px; font-size: 17px; max-width: 60ch; }
       setTimeout(function () { sending = false; }, 600);
     }, 450);
   });
+
+
+  /* ---------- Middag ---------- */
+  var cooks = {
+    ingrid: { i: 'I', c: 'var(--coral-strong)', n: 'Ingrid' },
+    jonas: { i: 'J', c: 'var(--blue-strong)', n: 'Jonas' },
+    ida: { i: 'I', c: 'var(--purple-strong)', n: 'Ida' },
+    emil: { i: 'E', c: 'var(--green-strong)', n: 'Emil' }
+  };
+  var week = [
+    { d: 'Man', title: 'Fiskesuppe', cook: 'ingrid', ing: ['Torsk', 'Gulrøtter', 'Fløte', 'Purre'] },
+    { d: 'Tir', title: 'Kyllinggryte', cook: 'jonas', busy: 'Jonas har Foreldremøte 17:00–18:30. Kan noen andre lage middag?', ing: ['Kyllingfilet', 'Kokosmelk', 'Ris', 'Paprika'] },
+    { d: 'Ons', title: 'Pannekaker', cook: 'ida', ing: ['Melk', 'Egg', 'Blåbærsyltetøy'] },
+    { d: 'Tor', title: '', cook: null, today: true },
+    { d: 'Fre', title: 'Taco', cook: 'all', ing: ['Tacoskjell', 'Kjøttdeig', 'Rømme', 'Mais'] }
+  ];
+  var suggestions = { 'Lasagne': ['Lasagneplater', 'Kjøttdeig', 'Revet ost'], 'Pizza': ['Pizzadeig', 'Tomatsaus', 'Revet ost'], 'Pølser og potetmos': ['Pølser', 'Poteter', 'Melk'] };
+  var onList = ['Melk', 'Rømme'];
+  var haveIt = ['Ris', 'Egg'];
+  var weekEl = document.getElementById('din-week');
+  function cookHTML(key, pop) {
+    if (key === 'all') return '<span class="cook all" aria-label="Alle lager sammen">Alle</span>';
+    var c = cooks[key];
+    return '<span class="cook' + (pop ? ' pop' : '') + '" style="background:' + c.c + '" aria-label="' + c.n + ' lager">' + c.i + '</span>';
+  }
+  function renderWeek(popIndex) {
+    var html = '';
+    week.forEach(function (w, i) {
+      var busy = w.busy && w.cook === 'jonas';
+      html += '<div class="din' + (busy ? ' busy' : '') + '"><span class="d' + (w.today ? ' today' : '') + '">' + w.d + '</span>';
+      if (w.title) {
+        html += '<div><b>' + esc(w.title) + '</b></div>' + cookHTML(w.cook, popIndex === i);
+      } else {
+        html += '<span class="none">Ikke bestemt</span><span></span><div class="sugg" role="group" aria-label="Forslag fra tidligere middager">';
+        Object.keys(suggestions).forEach(function (k) { html += '<button type="button" data-sugg="' + esc(k) + '" data-day="' + i + '">' + esc(k) + '</button>'; });
+        html += '</div>';
+      }
+      if (busy) {
+        html += '<p class="warn">' + esc(w.busy) + '</p><div class="fix" role="group" aria-label="Velg en annen som lager">';
+        ['ingrid', 'ida', 'emil'].forEach(function (k) { html += '<button type="button" data-cook="' + k + '" data-day="' + i + '">' + cooks[k].n + ' lager</button>'; });
+        html += '</div>';
+      }
+      html += '</div>';
+    });
+    weekEl.innerHTML = html;
+  }
+  weekEl.addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    var i = +b.dataset.day;
+    if (b.dataset.sugg) { week[i].title = b.dataset.sugg; week[i].cook = 'emil'; week[i].ing = suggestions[b.dataset.sugg]; }
+    if (b.dataset.cook) { week[i].cook = b.dataset.cook; }
+    renderWeek(i); resetShop();
+  });
+  var shopBtn = document.getElementById('shop-btn'), shop = document.getElementById('shop'), shopList = document.getElementById('shop-list'), shopNote = document.querySelector('.shop-note');
+  var noteText = shopNote.textContent;
+  function resetShop() {
+    if (!shopBtn.disabled) return;
+    shopBtn.disabled = false; shopBtn.textContent = 'Legg ukas ingredienser i handlelista'; shop.hidden = true; shopNote.textContent = noteText;
+  }
+  shopBtn.addEventListener('click', function () {
+    var seen = {}, add = [], skipped = 0;
+    week.forEach(function (w) { (w.ing || []).forEach(function (x) {
+      if (seen[x]) return; seen[x] = true;
+      if (onList.indexOf(x) > -1 || haveIt.indexOf(x) > -1) { skipped++; return; }
+      add.push([x, w.title]);
+    }); });
+    var html = onList.map(function (x) { return '<li>' + esc(x) + '<span class="src">fra før</span></li>'; }).join('');
+    add.forEach(function (a, k) { html += '<li class="new" style="animation-delay:' + (k * 45) + 'ms">' + esc(a[0]) + '<span class="src">' + esc(a[1]) + '</span></li>'; });
+    shopList.innerHTML = html; shop.hidden = false;
+    shopBtn.disabled = true; shopBtn.textContent = add.length + ' lagt i handlelista';
+    shopNote.textContent = skipped + ' hoppet over fordi de står på lista eller er merket «Har vi».';
+  });
+  renderWeek();
 
   /* ---------- Innganger og pause når scenen er utenfor skjermen ---------- */
   if ('IntersectionObserver' in window) {
