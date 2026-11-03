@@ -365,6 +365,21 @@ section { position: relative; }
 .sugg .done-msg { margin-top: 10px; font-weight: 700; font-size: 16px; color: #0B6B41; }
 .fine { margin-top: 18px; font-size: 15px; color: var(--ink-2); }
 
+/* ---------- iPad og Mac ---------- */
+.ipads { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2.4vw, 36px); margin-top: clamp(40px, 6vw, 80px); align-items: end; }
+.ipad { margin: 0; }
+.ipad .frame { background: var(--line-ink); border-radius: clamp(18px, 2.2vw, 34px); padding: clamp(7px, 0.8vw, 12px); box-shadow: 0 30px 60px -30px rgba(31, 29, 43, 0.45); }
+.ipad img { display: block; width: 100%; height: auto; border-radius: clamp(11px, 1.4vw, 22px); }
+.ipad:nth-child(2) { transform: translateY(clamp(-40px, -3vw, -16px)); }
+.ipad figcaption { margin-top: 18px; font-size: 15px; color: var(--ink-2); }
+.ipad figcaption b { display: block; color: var(--ink); font-size: 17px; }
+.devices-list { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 10px; }
+.devices-list span { background: var(--card); border-radius: 999px; padding: 8px 16px; font-size: 15px; font-weight: 600; }
+@media (max-width: 900px) {
+  .ipads { grid-template-columns: 1fr; max-width: 440px; margin-inline: auto; }
+  .ipad:nth-child(2) { transform: none; }
+}
+
 /* Middag */
 .middag { background: #FFE9D4; }
 .middag .split { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
@@ -550,6 +565,7 @@ details .ans { padding: 0 24px 24px; font-size: 17px; max-width: 60ch; }
       <li><a href="#middag">Middag</a></li>
       <li><a href="#kveld">Kveldsbrief</a></li>
       <li><a href="#widgeter">Widgeter</a></li>
+      <li><a href="#ipad">iPad og Mac</a></li>
       <li><a href="#sporsmal">Spørsmål</a></li>
     </ul>
     <!-- APP-STORE-LENKE: Redet i App Store (Apple ID 6827096660). Samme lenke står to steder på siden. -->
@@ -564,7 +580,7 @@ details .ans { padding: 0 24px 24px; font-size: 17px; max-width: 60ch; }
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <h1 id="hero-title">Hele familien under ett tak</h1>
-      <p class="lede">Redet samler avtalene, kjøringen, middagene, ukeplanene, huskelappene og de små hilsenene i én app. Alle ser det samme, og ingen trenger å spørre «hvem henter?» i familiechatten.</p>
+      <p class="lede">Redet samler avtalene, kjøringen, middagene, ukeplanene, huskelappene og de små hilsenene i én app på iPhone, iPad og Mac. Alle ser det samme, og ingen trenger å spørre «hvem henter?» i familiechatten.</p>
       <div class="hero-actions">
         <a class="btn btn-coral" href="#idag">Se hvordan det virker</a>
         <span class="price-note"><strong>49 kr</strong> én gang, for hele familien</span>
@@ -1062,6 +1078,31 @@ details .ans { padding: 0 24px 24px; font-size: 17px; max-width: 60ch; }
   </div>
 </section>
 
+<!-- ============ iPad og Mac ============ -->
+<section class="band" id="ipad" style="padding-top:0" aria-labelledby="ipad-title">
+  <div class="wrap">
+    <div data-reveal>
+      <h2 class="h2" id="ipad-title">Nå også på iPad og Mac</h2>
+      <p class="lede" style="margin-top:24px;max-width:46ch">Sett iPaden på kjøkkenbenken og se hele uka på én gang. På iPad og Mac får Redet en sidemeny og god plass, og på Mac har du også menylinje og tastatursnarveier. Alt er likt på alle enhetene, for familien deles via iCloud.</p>
+      <div class="devices-list"><span>iPhone</span><span>iPad</span><span>Mac med Apple-chip</span></div>
+    </div>
+    <div class="ipads" data-reveal>
+      <figure class="ipad">
+        <div class="frame"><img src="bilder/ipad/01-i-dag.jpg" width="825" height="1100" loading="lazy" alt="Redet på iPad: I dag med vær, Husk, middag og det som må avklares, med sidemeny til venstre."></div>
+        <figcaption><b>I dag</b>Været, Husk, middagen og hvem som henter.</figcaption>
+      </figure>
+      <figure class="ipad">
+        <div class="frame"><img src="bilder/ipad/03-kalender-uke.jpg" width="825" height="1100" loading="lazy" alt="Redet på iPad: kalenderen for hele uka med kjøring og henting for hver avtale."></div>
+        <figcaption><b>Hele uka</b>Alle avtalene, med kjøring og henting.</figcaption>
+      </figure>
+      <figure class="ipad">
+        <div class="frame"><img src="bilder/ipad/06-middag.jpg" width="825" height="1100" loading="lazy" alt="Redet på iPad: middagsplanen for uka, med hvem som lager mat hver dag."></div>
+        <figcaption><b>Middagsuka</b>Hvem lager hva, dag for dag.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <!-- ============ Kom i gang ============ -->
 <section class="band" style="padding-top:0" aria-labelledby="start-title">
   <div class="wrap">
@@ -1115,7 +1156,7 @@ details .ans { padding: 0 24px 24px; font-size: 17px; max-width: 60ch; }
       </details>
       <details name="faq">
         <summary>Trenger alle hver sin iPhone?<span class="pm" aria-hidden="true"></span></summary>
-        <div class="ans"><p>Alle som skal bruke appen trenger en iPhone med Apple-konto. Barn uten telefon kan likevel være med i familien, så avtalene og kjøringen deres vises for de voksne.</p></div>
+        <div class="ans"><p>Alle som skal bruke appen trenger en Apple-konto og en iPhone, iPad eller Mac med Apple-chip. Barn uten telefon kan likevel være med i familien, så avtalene og kjøringen deres vises for de voksne.</p></div>
       </details>
       <details name="faq">
         <summary>Koster det noe for hver person?<span class="pm" aria-hidden="true"></span></summary>
@@ -1131,7 +1172,11 @@ details .ans { padding: 0 24px 24px; font-size: 17px; max-width: 60ch; }
       </details>
       <details name="faq">
         <summary>Finnes Redet til Android?<span class="pm" aria-hidden="true"></span></summary>
-        <div class="ans"><p>Ikke nå. Redet er laget for iPhone og bygger på iCloud, Apple Kalender og widgeter på hjemskjermen.</p></div>
+        <div class="ans"><p>Ikke nå. Redet er laget for iPhone, iPad og Mac og bygger på iCloud, Apple Kalender og widgeter på hjemskjermen.</p></div>
+      </details>
+      <details name="faq">
+        <summary>Virker Redet på iPad og Mac?<span class="pm" aria-hidden="true"></span></summary>
+        <div class="ans"><p>Ja. Det er den samme appen, så kjøpet gjelder på alle enhetene. Last ned Redet fra App Store på iPaden eller Macen og logg inn med den samme Apple-kontoen, så henter Redet familien fra iCloud. På Mac har du i tillegg menylinje og tastatursnarveier.</p></div>
       </details>
       <details name="faq">
         <summary>Hvor laster jeg ned Redet?<span class="pm" aria-hidden="true"></span></summary>
