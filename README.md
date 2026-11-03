@@ -1,6 +1,6 @@
 # Redet – nettsiden
 
-Markedsføringssiden for familieappen Redet. Hele siden er `index.html`, pluss App Store-badgen i `bilder/`. Den trenger ingen bygging og henter ingenting fra andre nettsteder (ingen skrifter, bilder eller sporing utenfra).
+Markedsføringssiden for familieappen Redet. Hele siden er `index.html`, pluss App Store-badgen og iPad-skjermbildene i `bilder/`. Den trenger ingen bygging og henter ingenting fra andre nettsteder (ingen skrifter, bilder eller sporing utenfra).
 
 - **Se den på Macen:** høyreklikk `index.html` i Finder og velg Åpne med → Safari.
 - **Publisering:** `.github/workflows/nettside.yml` publiserer siden med GitHub Pages hver gang noe endres på `main`.
