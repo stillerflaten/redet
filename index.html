@@ -422,6 +422,46 @@ section { position: relative; }
 .din-facts li { display: flex; gap: 12px; align-items: baseline; font-size: 18px; }
 .din-facts li::before { content: ""; width: 18px; height: 10px; flex: none; transform: translateY(-2px); background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 20'%3E%3Cpath d='M4 16 L18 4 L32 16' fill='none' stroke='%23C0560A' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; }
 
+/* Ukelønn */
+.lonn { background: #EEE8FF; }
+.lonn .split { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+@media (max-width: 900px) { .lonn .split { grid-template-columns: 1fr; } }
+.lonn-stage { background: #DCD2FF; border-radius: var(--radius); padding: clamp(24px, 4vw, 64px); display: flex; justify-content: center; }
+.lonn-stage .screen { margin: 0 auto; }
+.seg-ctl.three { grid-template-columns: 1fr 1fr 1fr; }
+.pend { background: var(--purple-soft); border-radius: 18px; padding: 12px 14px; margin-top: 14px; }
+.pend .lbl { font-size: 13px; font-weight: 800; color: var(--purple-strong); letter-spacing: .02em; }
+.pend ul { list-style: none; padding: 0; margin: 6px 0 10px; display: grid; gap: 4px; font-size: 15px; font-weight: 600; }
+.pend li { display: flex; justify-content: space-between; gap: 8px; }
+.pend li span { color: var(--ink-2); font-weight: 600; }
+.pend button { width: 100%; min-height: 44px; border: 0; border-radius: 12px; background: var(--purple-strong); color: #fff; font-weight: 700; font-size: 16px; cursor: pointer; transition: transform 140ms var(--ease-out); }
+.pend button:active, .opt button:active, .dpill:active { transform: scale(0.96); }
+.pend.ok { text-align: center; font-weight: 700; color: var(--purple-strong); }
+.kidc { background: var(--card); border-radius: 18px; padding: 12px 14px; margin-top: 10px; }
+.kidc .head { display: grid; grid-template-columns: 30px 1fr auto; gap: 10px; align-items: center; }
+.kidc .av { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 13px; }
+.kidc .head b { font-size: 17px; }
+.kidc .sum { text-align: right; font-weight: 800; font-size: 20px; letter-spacing: -0.02em; transition: transform 300ms var(--ease-out); }
+.kidc .sum.pop { transform: scale(1.12); }
+.kidc .sub { grid-column: 2 / -1; font-size: 13px; color: var(--ink-2); font-weight: 600; margin-top: -4px; }
+.chore { margin-top: 10px; }
+.chore .t { display: flex; justify-content: space-between; font-size: 15px; font-weight: 700; }
+.chore .t span { color: var(--ink-2); font-weight: 600; }
+.days { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; margin-top: 6px; }
+.dpill { border: 2px solid var(--surface); background: var(--surface); color: var(--ink-2); border-radius: 10px; min-height: 36px; font-weight: 700; font-size: 13px; cursor: pointer; transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease, transform 140ms var(--ease-out); }
+.dpill.off { visibility: hidden; }
+.dpill.done { background: var(--card); border-color: currentColor; }
+.dpill.approved { color: #fff; }
+.dpill[disabled] { cursor: default; }
+.dpill.future { opacity: .45; }
+.opt { margin-top: 10px; display: grid; grid-template-columns: 1fr auto; gap: 4px 10px; align-items: center; }
+.opt .t { font-size: 15px; font-weight: 700; }
+.opt small { grid-column: 1; font-size: 13px; color: var(--ink-2); font-weight: 600; }
+.opt button { grid-row: 1 / span 2; grid-column: 2; border: 0; border-radius: 999px; min-height: 36px; padding: 0 14px; font-weight: 700; font-size: 14px; background: var(--surface); color: var(--ink); cursor: pointer; transition: transform 140ms var(--ease-out); }
+.opt button[disabled] { opacity: .6; cursor: default; }
+.lonn-key { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--ink-2); font-weight: 600; margin-top: 12px; }
+.lonn-key i { display: inline-block; width: 12px; height: 12px; border-radius: 4px; margin-right: 5px; vertical-align: -1px; }
+
 /* Kveldsbrief */
 .kveld { background: var(--evening); color: #F5F3FA; overflow: hidden; }
 .kveld .h2, .kveld h3 { color: #fff; }
@@ -563,6 +603,7 @@ details .ans { padding: 0 24px 24px; font-size: 17px; max-width: 60ch; }
       <li><a href="#husk">Husk</a></li>
       <li><a href="#ukeplan">Ukeplan</a></li>
       <li><a href="#middag">Middag</a></li>
+      <li><a href="#ukelonn">Ukelønn</a></li>
       <li><a href="#kveld">Kveldsbrief</a></li>
       <li><a href="#widgeter">Widgeter</a></li>
       <li><a href="#ipad">iPad og Mac</a></li>
@@ -1006,6 +1047,32 @@ details .ans { padding: 0 24px 24px; font-size: 17px; max-width: 60ch; }
   </div>
 </section>
 
+<!-- ============ Ukelønn ============ -->
+<section class="band lonn" id="ukelonn" aria-labelledby="lonn-title">
+  <div class="wrap split">
+    <div class="copy" data-reveal>
+      <h2 class="h2" id="lonn-title">Ukelønn uten mas</h2>
+      <p class="lede">Gi barna faste oppgaver med en kronesum. De krysser av selv på sin egen telefon, og en voksen godkjenner med ett trykk.</p>
+      <ul class="din-facts">
+        <li>Oppgaver som ikke blir gjort, gir 0 kr. Ingenting trekkes.</li>
+        <li>Frivillige oppgaver, som å gå ut med søpla, gir penger hver gang.</li>
+        <li>Et fast grunnbeløp kan komme i tillegg.</li>
+        <li>Søndag viser ukeoppgjøret hva hvert barn skal ha, og dere krysser av «Betalt». Selve pengene ordner dere som før.</li>
+      </ul>
+      <p class="pointer-note"><svg class="roof" viewBox="0 0 36 20" aria-hidden="true"><path d="M4 16 L18 4 L32 16" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>Prøv selv: kryss av for Ida i dag, og godkjenn det som venter.</p>
+    </div>
+    <div class="lonn-stage" data-reveal>
+      <div class="screen" data-ui>
+        <div class="s-title"><b>Lister</b></div>
+        <div class="seg-ctl three" aria-hidden="true"><span>Lister</span><span>Middag</span><span class="on">Ukelønn</span></div>
+        <p class="wk"><i aria-hidden="true">‹</i>Uke 45<i aria-hidden="true">›</i></p>
+        <div id="lonn-app" aria-live="polite"></div>
+        <p class="lonn-key"><span><i style="background:var(--purple-strong)"></i>Godkjent</span><span><i style="border:2px solid var(--purple-strong)"></i>Venter</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ Kveldsbrief ============ -->
 <section class="band kveld" id="kveld" aria-labelledby="kveld-title">
   <div class="sky scene" aria-hidden="true">
@@ -1167,6 +1234,10 @@ details .ans { padding: 0 24px 24px; font-size: 17px; max-width: 60ch; }
         <div class="ans"><p>Nei. Forslagene til Husk lages av Apple Intelligence på telefonen, uten internett. Ukeplanen deles bare med familien via iCloud, som resten av appen.</p></div>
       </details>
       <details name="faq">
+        <summary>Håndterer Redet ekte penger?<span class="pm" aria-hidden="true"></span></summary>
+        <div class="ans"><p>Nei. Ukelønn i Redet holder oversikt over oppgaver og hva hvert barn har tjent. Selve pengene gir dere som før, med kontanter, Vipps eller overføring, og så krysser dere av «Betalt» i appen.</p></div>
+      </details>
+      <details name="faq">
         <summary>Hvor kommer værmeldingen fra?<span class="pm" aria-hidden="true"></span></summary>
         <div class="ans"><p>Fra Meteorologisk institutt, de samme dataene som Yr bruker. Klesforslagene i kveldsbriefen regnes ut av temperatur, regn og vind.</p></div>
       </details>
@@ -1195,7 +1266,7 @@ details .ans { padding: 0 24px 24px; font-size: 17px; max-width: 60ch; }
       <span class="word">Redet</span>
     </div>
     <div class="foot-cols">
-      <div><b>Appen</b><a href="#idag">I dag og kjøring</a><a href="#husk">Husk</a><a href="#ukeplan">Ukeplan</a><a href="#hilsener">Hilsener</a><a href="#middag">Middag</a></div>
+      <div><b>Appen</b><a href="#idag">I dag og kjøring</a><a href="#husk">Husk</a><a href="#ukeplan">Ukeplan</a><a href="#hilsener">Hilsener</a><a href="#middag">Middag</a><a href="#ukelonn">Ukelønn</a></div>
       <div><b>Mer</b><a href="#kveld">Kveldsbrief</a><a href="#widgeter">Widgeter</a><a href="#pris">Pris</a></div>
       <div><b>Hjelp</b><a href="#sporsmal">Spørsmål og svar</a><a href="support/">Hjelp og kontakt</a><a href="personvern/">Personvern</a></div>
       <div><b>Laget i Norge</b><p>Av <a href="https://tillerflatendigital.no" style="display:inline;padding:0">Tillerflaten Digital</a> (org.nr. 938 657 742), for familier som vil ha litt bedre oversikt og litt mindre mas.</p></div>
@@ -1377,6 +1448,82 @@ details .ans { padding: 0 24px 24px; font-size: 17px; max-width: 60ch; }
     shopNote.textContent = skipped + ' hoppet over fordi de står på lista eller er merket «Har vi».';
   });
   renderWeek();
+
+  /* ---------- Ukelønn ---------- */
+  var lonnEl = document.getElementById('lonn-app');
+  var lDays = ['Man', 'Tir', 'Ons', 'Tor', 'Fre'], lToday = 3;
+  var lKids = {
+    ida: { n: 'Ida', i: 'I', c: 'var(--purple-strong)', base: 50 },
+    emil: { n: 'Emil', i: 'E', c: 'var(--green-strong)', base: 30 }
+  };
+  var lChores = [
+    { kid: 'ida', t: 'Dekke bordet', kr: 5, days: [0, 1, 2, 3, 4], s: { 0: 'a', 1: 'a', 2: 'a' } },
+    { kid: 'ida', t: 'Støvsuge stua', kr: 15, days: [2], s: { 2: 'd' } },
+    { kid: 'emil', t: 'Mate katten', kr: 5, days: [0, 1, 2, 3, 4], s: { 0: 'a', 2: 'a', 3: 'd' } }
+  ];
+  var lOpt = { kid: 'emil', t: 'Gå ut med søpla', kr: 5, times: 1, today: false };
+  var lPop = null;
+  function lSum(k) {
+    var a = 0, p = 0;
+    lChores.forEach(function (c) { if (c.kid !== k) return; Object.keys(c.s).forEach(function (d) { if (c.s[d] === 'a') a += c.kr; if (c.s[d] === 'd') p += c.kr; }); });
+    if (lOpt.kid === k) { a += lOpt.times * lOpt.kr; if (lOpt.today) p += lOpt.kr; }
+    return { a: a, p: p };
+  }
+  function renderLonn() {
+    var pend = [];
+    lChores.forEach(function (c) { Object.keys(c.s).forEach(function (d) { if (c.s[d] === 'd') pend.push([lKids[c.kid].n, c.t, lDays[d], c.kr]); }); });
+    if (lOpt.today) pend.push([lKids[lOpt.kid].n, lOpt.t, lDays[lToday], lOpt.kr]);
+    var html = '';
+    if (pend.length) {
+      html += '<div class="pend"><p class="lbl">VENTER PÅ GODKJENNING</p><ul>';
+      pend.forEach(function (x) { html += '<li>' + esc(x[0] + ': ' + x[1]) + '<span>' + x[2] + ' · ' + x[3] + ' kr</span></li>'; });
+      html += '</ul><button type="button" data-approve="1">Godkjenn alle</button></div>';
+    } else {
+      html += '<div class="pend ok">Alt er godkjent</div>';
+    }
+    Object.keys(lKids).forEach(function (k) {
+      var kid = lKids[k], sum = lSum(k);
+      html += '<div class="kidc"><div class="head"><span class="av" style="background:' + kid.c + '">' + kid.i + '</span><b>' + kid.n + '</b><span class="sum' + (lPop === k ? ' pop' : '') + '">' + (kid.base + sum.a) + ' kr</span>';
+      html += '<span class="sub">' + kid.base + ' kr fast + ' + sum.a + ' kr for oppgaver' + (sum.p ? ', ' + sum.p + ' kr venter' : '') + '</span></div>';
+      lChores.forEach(function (c, ci) {
+        if (c.kid !== k) return;
+        html += '<div class="chore"><p class="t">' + esc(c.t) + '<span>' + c.kr + ' kr</span></p><div class="days">';
+        lDays.forEach(function (d, di) {
+          if (c.days.indexOf(di) < 0) { html += '<button class="dpill off" tabindex="-1" aria-hidden="true"></button>'; return; }
+          var st = c.s[di], fut = di > lToday;
+          var cls = 'dpill' + (st === 'a' ? ' approved' : st === 'd' ? ' done' : '') + (fut ? ' future' : '');
+          var style = st === 'a' ? 'background:' + kid.c + ';border-color:' + kid.c : st === 'd' ? 'color:' + kid.c : '';
+          var label = d + ', ' + (st === 'a' ? 'godkjent' : st === 'd' ? 'venter på godkjenning' : fut ? 'ikke ennå' : 'ikke krysset av');
+          html += '<button type="button" class="' + cls + '" style="' + style + '" data-c="' + ci + '" data-d="' + di + '" aria-label="' + esc(c.t) + ' ' + label + '"' + (fut || st === 'a' ? ' disabled' : '') + '>' + d + '</button>';
+        });
+        html += '</div></div>';
+      });
+      if (lOpt.kid === k) {
+        html += '<div class="opt"><span class="t">' + esc(lOpt.t) + '</span><button type="button" data-opt="1"' + (lOpt.today ? ' disabled' : '') + '>' + (lOpt.today ? 'Gjort i dag' : 'Kryss av i dag') + '</button>';
+        html += '<small>Frivillig · ' + lOpt.kr + ' kr hver gang · ' + (lOpt.times + (lOpt.today ? 1 : 0)) + ' ganger denne uka</small></div>';
+      }
+      html += '</div>';
+    });
+    lonnEl.innerHTML = html;
+    lPop = null;
+  }
+  lonnEl.addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b || b.disabled) return;
+    if (b.dataset.approve) {
+      lChores.forEach(function (c) { Object.keys(c.s).forEach(function (d) { if (c.s[d] === 'd') { c.s[d] = 'a'; lPop = c.kid; } }); });
+      if (lOpt.today) { lOpt.times++; lOpt.today = false; lOpt.done = true; }
+      lPop = 'both';
+    } else if (b.dataset.opt) {
+      lOpt.today = true;
+    } else if (b.dataset.c) {
+      var c = lChores[+b.dataset.c], d = +b.dataset.d;
+      if (c.s[d] === 'd') delete c.s[d]; else c.s[d] = 'd';
+    }
+    var pop = lPop; renderLonn();
+    if (pop === 'both') lonnEl.querySelectorAll('.sum').forEach(function (el) { el.classList.add('pop'); setTimeout(function () { el.classList.remove('pop'); }, 320); });
+    if (lOpt.done) { var ob = lonnEl.querySelector('[data-opt]'); if (ob) { ob.disabled = true; ob.textContent = 'Gjort i dag'; } }
+  });
+  renderLonn();
 
   /* ---------- Fast toppmeny ---------- */
   var nav = document.querySelector('.nav');
